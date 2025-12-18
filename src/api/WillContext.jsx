@@ -12,9 +12,7 @@ export default function ManageData({ children }) {
   const fetchData = async () => {
     try {
       setError("");
-      const response = await axios.get(
-        `${API}/api/get_all/beneficiary`,
-      );
+      const response = await axios.get(`${API}/api/get_all/beneficiary`);
       setBeneficiaries(response.data);
       setLoading(false);
     } catch (err) {

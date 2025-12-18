@@ -1,11 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 import federation from "@originjs/vite-plugin-federation";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),
-     federation({
+  plugins: [
+    react(),
+    federation({
       name: "beneficiary",
       filename: "remoteEntry.js",
       exposes: {
@@ -14,7 +15,7 @@ export default defineConfig({
       shared: ["react", "react-dom", "react-router-dom"],
     }),
   ],
- 
+
   build: {
     modulePreload: false,
     target: "esnext",
