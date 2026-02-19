@@ -17,7 +17,6 @@ export default function AddBeneficiary() {
     DoB: "",
     relation: "",
   });
-
   function handleChange(e) {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   }
