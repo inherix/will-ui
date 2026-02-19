@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: will-mf-app-deployment
+  labels:
+    app: will-mf
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: will-mf
+  template:
+    metadata:
+      labels:
+        app: will-mf
+    spec:
+      containers:
+        - name: will-mf-container
+          image: 33155028257.dkr.ecr.us-east-1.amazonaws.com/dev/will-mf:1.0
+          ports:
+            - containerPort: 81
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: will-mf-service
+  labels:
+    app: will-mf
+spec:
+  selector:
+    app: will-mf
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 81
+  type: LoadBalancer
+
