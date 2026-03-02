@@ -66,7 +66,7 @@ jobs:
       - name: Configure EKS
         run: aws eks update-kubeconfig --region ${{vars.AWS_REGION}} --name inherix-dev
       - name: Apply Kubernetes manifests
-        run: kubectl apply -f k8s/customer.yml
+        run: kubectl apply -f k8s/will-ui.yml
       - name: apply to EKS
         run: kubectl set image deployment/will-mf-app-deployment will-mf-container=${{ vars.ECR_REPO }}:will-mf-${{ needs.build.outputs.image }}
       - name: Verify rollout
