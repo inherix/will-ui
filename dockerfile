@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build-stage
+FROM node:18.19.1-alpine3.19 AS build-stage
 
 WORKDIR /app
 
